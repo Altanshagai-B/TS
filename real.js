@@ -5,6 +5,7 @@ var uiController = (function () {
     nameP: ".name",
     nameCom: ".companyName",
     incomeList: ".list",
+    loaderDiv: ".results",
   };
 
   return {
@@ -26,6 +27,8 @@ var uiController = (function () {
           '<div id="delete" class="list_view clearfix"><div class="qualification">$$qua$$</div><div class="right clearfix"><div class="expiry_date">$$date$$</div></div>';
         html = html.replace("$$qua$$", a[i].Qualification);
         html = html.replace("$$date$$", a[i].ExpiryDate);
+        const loader = document.querySelector(".loader");
+        if (loader) loader.parentElement.removeChild(loader);
         document.querySelector(list).insertAdjacentHTML("beforeend", html);
         document.querySelector(DOMstrings.nameP).textContent = a[0].Employee;
         document.querySelector(DOMstrings.nameCom).textContent = a[0].Vendor;
@@ -94,13 +97,17 @@ var appController = (function (uiController, financeController) {
 
   var setupEventListeners = function () {
     var DOM = uiController.getDOMstrings();
-
+    var html1, loader;
+    loader = DOM.loaderDiv;
+    html1 =
+      '<div class="loader"><svg><use href="icons.svg#icon-cw"</use></svg></div>';
     document
       .querySelector(DOM.searchBtn)
       .addEventListener("click", function () {
         document.getElementById("nemeh").innerHTML = "";
         document.querySelector(DOM.nameP).textContent = "";
         document.querySelector(DOM.nameCom).textContent = "";
+        document.querySelector(loader).insertAdjacentHTML("beforeend", html1);
         ctrlAddItem();
       });
 
@@ -109,6 +116,7 @@ var appController = (function (uiController, financeController) {
         document.getElementById("nemeh").innerHTML = "";
         document.querySelector(DOM.nameP).textContent = "";
         document.querySelector(DOM.nameCom).textContent = "";
+        document.querySelector(loader).insertAdjacentHTML("beforeend", html1);
         ctrlAddItem();
       }
     });
