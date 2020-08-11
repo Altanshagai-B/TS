@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+body {
+  color: #555;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 16px;
+  position: relative;
+
+  height: 100vh;
+  font-weight: 400;
+  background-image: linear-gradient(to right bottom, #fdf1d1, #f3e5e4);
+  background-size: 100%;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  margin: 4vw auto;
+
+  border-radius: 6px;
+  /* 
+  box-shadow: 0 2rem 6rem 0.5rem rgba(101, 90, 86, 0.2); */
+  position: absolute;
+}
+.btn {
+  padding: 1.3rem 3rem;
+  font-size: 1.4rem;
+}
+.btn svg {
+  height: 2.25rem;
+  width: 2.25rem;
+  fill: currentColor;
+}
+.btn {
+  background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
+  border-radius: 10rem;
+  border: none;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+}
+.btn:hover {
+  transform: scale(1.05);
+}
+.btn:focus {
+  outline: none;
+}
+.btn > *:first-child {
+  margin-right: 1rem;
+}
+
+.header {
+  padding: 1rem;
+  position: absolute;
+}
+
+.search {
+  background-color: #fff;
+  border-radius: 10rem;
+  display: flex;
+  align-items: center;
+  padding-left: 3rem;
+  transition: all 0.3s;
+}
+.search:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 0.7rem 3rem rgba(101, 90, 86, 0.08);
+}
+.search__field {
+  border: none;
+  display: inline-block;
+  background: none;
+  font-family: inherit;
+  color: inherit;
+  font-size: 1.7rem;
+  width: 15rem;
+}
+.search__field:focus {
+  outline: none;
+}
+.search__field::placeholder {
+  color: #dad0cc;
+}
+.results {
+  padding: 3rem 0;
+  justify-content: center;
+  /* display: block; */
+  position: relative;
+  top: 7rem;
+}
+.results__list {
+  list-style: none;
+}
+.name,
+.companyName {
+  text-align: center;
+}
+.right {
+  float: right;
+}
+.list_view {
+  margin-bottom: 5px;
+  background-color: #ffffff;
+  padding: 12px;
+}
+.list_view:hover {
+  background-color: #dba0a0;
+  color: #f3e5e4;
+  /* font-size: 14px; */
+}
+.qualification {
+  float: left;
+  /* font-size: 13px; */
+  /* color: #444; */
+  margin-top: 2px;
+}
+.qualification:hover {
+  margin-left: 5px;
+  transition: 0.2s;
+}
+.expiry_date:hover {
+  margin-right: 5px;
+  transition: 0.2s;
+}
+/* .expiry_date {
+  letter-spacing: 0.5px;
+  float: left;
+} */
+.list {
+  justify-content: center;
+  position: relative;
+  width: 410px;
+  top: 20rem;
+}
