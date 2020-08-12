@@ -53,7 +53,7 @@ var financeController = (function () {})();
 var appController = (function (uiController, financeController) {
   var ctrlAddItem = function () {
     var sapP = uiController.getInput().sap;
-    var url = "/test.xlsx";
+    var url = "http://ubtc.edu.mn/test/test.xlsx";
 
     var oReq = new XMLHttpRequest();
 
