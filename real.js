@@ -12,26 +12,72 @@ var uiController = (function () {
     medee: function (a) {
       // a ajiltnii surgaltiin medeelel massive bdlaar irj bga
       this.a = a;
-      document.querySelector(DOMstrings.nameP).textContent = a[0].Employee;
-      document.querySelector(DOMstrings.nameCom).textContent = a[0].Vendor;
-      console.log(a[0].Employee);
       console.log(a);
-      //   for (const { Qualification } of a) {
-      //     console.log(Qualification);
-      //   }2
-      var html = "",
-        list = "";
-      list = DOMstrings.incomeList;
-      for (let i = 0; i < a.length; i++) {
-        html =
-          '<div id="delete" class="list_view clearfix"><div class="qualification">$$qua$$</div><div class="right clearfix"><div class="expiry_date">$$date$$</div></div>';
-        html = html.replace("$$qua$$", a[i].Qualification);
-        html = html.replace("$$date$$", a[i].ExpiryDate);
+      if (a.length == 0) {
         const loader = document.querySelector(".loader");
         if (loader) loader.parentElement.removeChild(loader);
-        document.querySelector(list).insertAdjacentHTML("beforeend", html);
+        document.querySelector(DOMstrings.nameCom).textContent =
+          "Илэрц олдсонгүй...";
+        console.log("hooson utga");
+      } else {
         document.querySelector(DOMstrings.nameP).textContent = a[0].Employee;
         document.querySelector(DOMstrings.nameCom).textContent = a[0].Vendor;
+        console.log(a[0].Employee);
+        console.log(a);
+        //   for (const { Qualification } of a) {
+        //     console.log(Qualification);
+        //   }2
+        var html = "",
+          list = "";
+        list = DOMstrings.incomeList;
+        for (let i = 0; i < a.length; i++) {
+          const loader = document.querySelector(".loader");
+          if (loader) loader.parentElement.removeChild(loader);
+          document.querySelector(DOMstrings.nameP).textContent = a[0].Employee;
+          document.querySelector(DOMstrings.nameCom).textContent = a[0].Vendor;
+          var today = new Date();
+          var n = today.toLocaleDateString();
+          var expiryDate = new Date(a[i].ExpiryDate);
+          var dc = expiryDate.toLocaleDateString();
+          var expiryTime = expiryDate.getTime();
+          var todayTime = today.getTime();
+
+          console.log(expiryTime);
+          console.log(todayTime);
+          var z = todayTime - expiryTime;
+          var zz = z + 7776000000;
+          console.log(zz);
+          console.log(z / 86400000);
+          console.log(n);
+          if (z > 0) {
+            console.log("Hugatsaaa duussan!!!!!!");
+            html =
+              '<div id="delete" class="list_duussan clearfix"><div class="qualification">$$qua$$</div><div class="right clearfix"><div class="expiry_date">$$date$$</div></div></div>';
+            html = html.replace("$$qua$$", a[i].Qualification);
+            html = html.replace("$$date$$", a[i].ExpiryDate);
+            document.querySelector(list).insertAdjacentHTML("beforeend", html);
+          } else {
+            if (zz > 0) {
+              html =
+                '<div id="delete" class="list_duusaj clearfix"><div class="qualification">$$qua$$</div><div class="right clearfix"><div class="expiry_date">$$date$$</div></div></div>';
+              html = html.replace("$$qua$$", a[i].Qualification);
+              html = html.replace("$$date$$", a[i].ExpiryDate);
+              document
+                .querySelector(list)
+                .insertAdjacentHTML("beforeend", html);
+              console.log("baga");
+            } else {
+              html =
+                '<div id="delete" class="list_heviin clearfix"><div class="qualification">$$qua$$</div><div class="right clearfix"><div class="expiry_date">$$date$$</div></div></div>';
+              html = html.replace("$$qua$$", a[i].Qualification);
+              html = html.replace("$$date$$", a[i].ExpiryDate);
+              document
+                .querySelector(list)
+                .insertAdjacentHTML("beforeend", html);
+              console.log("baga");
+            }
+          }
+        }
       }
     },
 
@@ -52,8 +98,11 @@ var financeController = (function () {})();
 // surgaltiin medeelel excel file naas unshij hereglegchiin oruulsan SAP aar shuugeed massive bdlaar butsaana
 var appController = (function (uiController, financeController) {
   var ctrlAddItem = function () {
+    //SAP dugaar shalgah
     var sapP = uiController.getInput().sap;
-    var url = "http://ubtc.edu.mn/test/test.xlsx";
+
+    // excel file unshih heseg
+    var url = "./test.xlsx";
 
     var oReq = new XMLHttpRequest();
 
@@ -104,20 +153,50 @@ var appController = (function (uiController, financeController) {
     document
       .querySelector(DOM.searchBtn)
       .addEventListener("click", function () {
-        document.getElementById("nemeh").innerHTML = "";
-        document.querySelector(DOM.nameP).textContent = "";
-        document.querySelector(DOM.nameCom).textContent = "";
-        document.querySelector(loader).insertAdjacentHTML("beforeend", html1);
-        ctrlAddItem();
+        var sapCheck = uiController.getInput().sap;
+        if (isNaN(sapCheck)) {
+          window.alert("Зөвхөн тоо оруулна уу!!!");
+        } else {
+          if (sapCheck.length < 7) {
+            window.alert("САП дугаар алдаатай байна!!!");
+          } else {
+            if (sapCheck.length > 7) {
+              window.alert("САП дугаар алдаатай байна!!!");
+            } else {
+              document.getElementById("nemeh").innerHTML = "";
+              document.querySelector(DOM.nameP).textContent = "";
+              document.querySelector(DOM.nameCom).textContent = "";
+              document
+                .querySelector(loader)
+                .insertAdjacentHTML("beforeend", html1);
+              ctrlAddItem();
+            }
+          }
+        }
       });
 
     document.addEventListener("keypress", function (event) {
       if (event.keyCode === 13 || event.which === 13) {
-        document.getElementById("nemeh").innerHTML = "";
-        document.querySelector(DOM.nameP).textContent = "";
-        document.querySelector(DOM.nameCom).textContent = "";
-        document.querySelector(loader).insertAdjacentHTML("beforeend", html1);
-        ctrlAddItem();
+        var sapCheck = uiController.getInput().sap;
+        if (isNaN(sapCheck)) {
+          window.alert("Зөвхөн тоо оруулна уу!!!");
+        } else {
+          if (sapCheck.length < 7) {
+            window.alert("САП дугаар алдаатай байна!!!");
+          } else {
+            if (sapCheck.length > 7) {
+              window.alert("САП дугаар алдаатай байна!!!");
+            } else {
+              document.getElementById("nemeh").innerHTML = "";
+              document.querySelector(DOM.nameP).textContent = "";
+              document.querySelector(DOM.nameCom).textContent = "";
+              document
+                .querySelector(loader)
+                .insertAdjacentHTML("beforeend", html1);
+              ctrlAddItem();
+            }
+          }
+        }
       }
     });
   };

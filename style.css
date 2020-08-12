@@ -139,16 +139,25 @@ body {
 .right {
   float: right;
 }
-.list_view {
+.list_heviin {
   margin-bottom: 5px;
   background-color: #ffffff;
   padding: 12px;
 }
-.list_view:hover {
-  background-color: #dba0a0;
-  color: #f3e5e4;
-  /* font-size: 14px; */
+
+.list_duussan {
+  margin-bottom: 5px;
+  background-color: #f10b0b;
+  padding: 12px;
+  color: #fff;
 }
+
+.list_duusaj {
+  margin-bottom: 5px;
+  background-color: #fbff01;
+  padding: 12px;
+}
+
 .qualification {
   float: left;
   /* font-size: 13px; */
