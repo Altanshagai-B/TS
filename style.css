@@ -24,6 +24,8 @@ body {
   font-weight: 400;
   background-image: linear-gradient(to right bottom, #fdf1d1, #f3e5e4);
   background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 .container {
   display: flex;
@@ -183,4 +185,39 @@ body {
   position: relative;
   margin: 0 auto;
   /* top: 20rem; */
+}
+.developed {
+  color: #968b87;
+  font-size: 1.2rem;
+  margin-top: auto;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.surgalt {
+  justify-content: center;
+  position: relative;
+  display: flex;
+  margin-top: 2px;
+}
+.surgaltDate,
+.surgaltName,
+.venue,
+.hours {
+  padding-left: 2rem;
+
+  margin-bottom: 5px;
+  padding: 5px;
+}
+.surgalt:hover {
+  background-color: rgb(136, 115, 115);
+  color: #fff;
+}
+.surgaltHaruulah {
+  background-color: #fff;
+  position: relative;
+  margin: 0 auto;
+  color: rgb(88, 88, 88);
 }
