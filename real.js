@@ -210,6 +210,8 @@ var appController = (function (uiController, financeController) {
     var DOM = uiController.getDOMstrings();
     var html1, loader;
     loader = DOM.loaderDiv;
+    train = DOM.surgalt;
+    html2 = "";
     html1 =
       '<div class="loader"><svg><use href="icons.svg#icon-cw"</use></svg></div>';
     document
@@ -226,12 +228,15 @@ var appController = (function (uiController, financeController) {
               window.alert("САП дугаар алдаатай байна!!!");
             } else {
               document.getElementById("nemeh").innerHTML = "";
-              document.getElementById("surgaltH").innerHTML = "";
+              document.getElementById("trainustgah").innerHTML = "";
               document.querySelector(DOM.nameP).textContent = "";
               document.querySelector(DOM.nameCom).textContent = "";
               document
                 .querySelector(loader)
                 .insertAdjacentHTML("beforeend", html1);
+              // document
+              //   .querySelector(train)
+              //   .insertAdjacentHTML("beforeend", html2);
 
               ctrlAddItem();
               ctrlTrainingList();
@@ -253,12 +258,16 @@ var appController = (function (uiController, financeController) {
               window.alert("САП дугаар алдаатай байна!!!");
             } else {
               document.getElementById("nemeh").innerHTML = "";
-              document.getElementById("surgaltH").innerHTML = "";
+              document.getElementById("trainustgah").innerHTML = "";
               document.querySelector(DOM.nameP).textContent = "";
               document.querySelector(DOM.nameCom).textContent = "";
               document
                 .querySelector(loader)
                 .insertAdjacentHTML("beforeend", html1);
+              // document
+              //   .querySelector(train)
+              //   .insertAdjacentHTML("beforeend", html2);
+
               ctrlAddItem();
               ctrlTrainingList();
             }
